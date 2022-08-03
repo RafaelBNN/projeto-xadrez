@@ -69,8 +69,14 @@ public class UI {
         System.out.println();
         String toMove = (chessMatch.getCurrentPlayer() == Color.BLACK) ? ANSI_PURPLE : ANSI_CYAN;
         System.out.print("Turn: " + chessMatch.getTurn() + " | ");
-        System.out.print("To move: " + toMove + chessMatch.getCurrentPlayer() + ANSI_RESET);
-        if(chessMatch.getCheck()) System.out.println(" | " + ANSI_RED_BACKGROUND + ANSI_WHITE + "CHECK!" + ANSI_RESET);
+        if(!chessMatch.getCheckmate()){
+            System.out.print("To move: " + toMove + chessMatch.getCurrentPlayer() + ANSI_RESET);
+            if(chessMatch.getCheck()) System.out.println(" | " + ANSI_RED_BACKGROUND + ANSI_WHITE + "CHECK!" + ANSI_RESET);
+        }
+        else{
+            System.out.println("CHECKMATE!");
+            System.out.println("Winner: " + chessMatch.getCurrentPlayer());
+        }
     }
 
     public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves){
