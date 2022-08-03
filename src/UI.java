@@ -65,11 +65,12 @@ public class UI {
         
         printBoard(chessMatch.getPieces());
         System.out.println();
+        printCapturedPieces(capturedPieces);
+        System.out.println();
         String toMove = (chessMatch.getCurrentPlayer() == Color.BLACK) ? ANSI_PURPLE : ANSI_CYAN;
         System.out.print("Turn: " + chessMatch.getTurn() + " | ");
-        System.out.println("To move: " + toMove + chessMatch.getCurrentPlayer() + ANSI_RESET);
-        printCapturedPieces(capturedPieces);
-        
+        System.out.print("To move: " + toMove + chessMatch.getCurrentPlayer() + ANSI_RESET);
+        if(chessMatch.getCheck()) System.out.println(" | " + ANSI_RED_BACKGROUND + ANSI_WHITE + "CHECK!" + ANSI_RESET);
     }
 
     public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves){
